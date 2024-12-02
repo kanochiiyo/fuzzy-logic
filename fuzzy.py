@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import matplotlib.pyplot as plt
-import os
+import math
 
 
 class CustomLine:
@@ -43,9 +43,8 @@ def on_submit():
         messagebox.showerror("Input Error", "Masukkan angka yang valid.")
 
 
-# Setup tkinter window
 root = tk.Tk()
-root.title("Fuzzy Logic Tsukamoto")
+root.title("Penghitungan Kebutuhan Komputer")
 
 label_mhs = tk.Label(root, text="Masukkan jumlah mahasiswa yang hadir per sesi (5-40):")
 label_mhs.pack()
@@ -146,7 +145,7 @@ print(α1, α2, α3, α4)
 print(z1, z2, z3, z4)
 
 # ======== CRISP OUTPUT
-z = ((α1 * z1) + (α2 * z2) + (α3 * z3) + (α4 * z4)) / (α1 + α2 + α3 + α4)
+z = math.ceil(((α1 * z1) + (α2 * z2) + (α3 * z3) + (α4 * z4)) / (α1 + α2 + α3 + α4))
 
 # Grafik MAHASISWA
 # MHS SEDIKIT
@@ -205,27 +204,6 @@ axs[2].set_ylim([0, 1])
 CustomLine.render(axs[2], z, 1)
 axs[2].set_title("Kebutuhan")
 axs[2].legend()
-
-for i in range(len(x1)):
-    axs[0].axvline(
-        x=x1[i], color="gray", linestyle="--", linewidth=0.7
-    )  # Garis vertikal
-    axs[0].axhline(
-        y=y1[i], color="gray", linestyle="--", linewidth=0.7
-    )  # Garis horizontal
-
-for i in range(len(x3)):
-    axs[1].axvline(
-        x=x3[i], color="gray", linestyle="--", linewidth=0.7
-    )  # Garis vertikal
-    axs[1].axhline(y=y3[i], color="gray", linestyle="--", linewidth=0.7)
-
-for i in range(len(x5)):
-    axs[2].axvline(
-        x=x5[i], color="gray", linestyle="--", linewidth=0.7
-    )  # Garis vertikal
-    axs[2].axhline(y=y5[i], color="gray", linestyle="--", linewidth=0.7)
-
 
 plt.tight_layout()
 plt.show()
