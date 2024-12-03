@@ -19,11 +19,11 @@ class CustomLine:
         axes.set_yticks(new_yticks)
 
 
-mhs_max = 40
-mhs_min = 5
-kom_max = 50
-kom_min = 10
-kebutuhan_max = 100
+mhs_max = 250
+mhs_min = 40
+kom_max = 300
+kom_min = 50
+kebutuhan_max = 350
 kebutuhan_min = 50
 
 
@@ -39,20 +39,24 @@ def on_submit():
             messagebox.showerror(
                 "Input Error", "Input tidak valid, silahkan masukkan kembali"
             )
-    except ValueError:
-        messagebox.showerror("Input Error", "Masukkan angka yang valid.")
+    except ValueError as e:
+        messagebox.showerror(e)
 
 
 root = tk.Tk()
 root.title("Penghitungan Kebutuhan Komputer")
 
-label_mhs = tk.Label(root, text="Masukkan jumlah mahasiswa yang hadir per sesi (5-40):")
+label_mhs = tk.Label(
+    root, text="Masukkan jumlah mahasiswa yang hadir per sesi (40-250):"
+)
 label_mhs.pack()
 
 entry_mhs = tk.Entry(root)
 entry_mhs.pack()
 
-label_kom = tk.Label(root, text="Masukkan jumlah komputer yang siap digunakan (10-50):")
+label_kom = tk.Label(
+    root, text="Masukkan jumlah komputer yang siap digunakan (50-300):"
+)
 label_kom.pack()
 
 entry_kom = tk.Entry(root)
